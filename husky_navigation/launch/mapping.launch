@@ -1,0 +1,11 @@
+<launch>
+  <arg name="scan_topic"  default="/scan" />
+  
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+  <rosparam file="$(find navigation_exam)/params/mapping.yaml" command="load" />
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+  <!--
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find navigation_exam)/rviz/exam.rviz" />
+  -->
+</launch>

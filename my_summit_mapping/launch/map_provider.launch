@@ -1,0 +1,9 @@
+<launch>
+    <arg name="map_file" default="$(find my_summit_mapping)/maps/mymap.yaml"/>
+    <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)">
+    </node>
+</launch>
+
+<!-- <launch>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find my_summit_mapping)/maps/exam_map.yaml"/>
+</launch> -->

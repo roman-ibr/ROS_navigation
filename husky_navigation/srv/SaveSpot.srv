@@ -1,0 +1,7 @@
+#request
+string filename
+string label
+---
+#response
+bool navigation_successfull
+string message

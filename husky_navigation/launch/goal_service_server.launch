@@ -1,0 +1,10 @@
+<launch>
+  <!-- Run the AMCL server created during the localization section -->
+  <include file="$(find navigation_exam)/launch/path_planning.launch" />
+
+  <!--- Run the Send Goal Pose Base -->
+  <node pkg="navigation_exam" name="navigation_exam" type="goal_service_server.py" output="screen"/>
+  <group ns="spots_recorded">
+      <rosparam file="$(find navigation_exam)/scripts/spots.yaml" command="load" />
+  </group>
+</launch>
