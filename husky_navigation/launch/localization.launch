@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="use_map_topic" default="true"/>
+  <arg name="scan_topic" default="scan" />
+  <!-- Run the map server -->
+  <arg name="map_file" default="$(find navigation_exam)/maps/exam_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <node pkg="amcl" type="amcl" name="amcl">
+  <rosparam file="$(find navigation_exam)/params/localization.yaml" command="load" />
+    <remap from="scan" to="$(arg scan_topic)"/>    
+  </node>
+  <!--
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find my_summit_localization)/rviz/project.rviz" />
+  -->
+</launch>
